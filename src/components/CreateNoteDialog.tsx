@@ -40,7 +40,7 @@ const CreateNoteDialog = (props: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input === "") {
-      window.alert("Please enter a name for your notebook");
+      window.alert("Il manque un nom a ton idée.");
       return;
     }
     createNotebook.mutate(undefined, {
@@ -52,7 +52,7 @@ const CreateNoteDialog = (props: Props) => {
       },
       onError: (error) => {
         console.error(error);
-        window.alert("Failed to create new notebook");
+        window.alert("Erreur de création.");
       },
     });
   };
@@ -63,15 +63,15 @@ const CreateNoteDialog = (props: Props) => {
         <div className="border-dashed border-2 flex border-green-600 h-full rounded-lg items-center justify-center sm:flex-col hover:shadow-xl transition hover:-translate-y-1 flex-row p-4">
           <Plus className="w-6 h-6 text-green-600" strokeWidth={3} />
           <h2 className="font-semibold text-green-600 sm:mt-2">
-            New Note Book
+            Nouvelle idée
           </h2>
         </div>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>New Note Book</DialogTitle>
+          <DialogTitle>Nouvelle idée</DialogTitle>
           <DialogDescription>
-            You can create a new note by clicking the button below.
+            Ajoute une idée en cliquant dessus.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
@@ -93,7 +93,7 @@ const CreateNoteDialog = (props: Props) => {
               {createNotebook.isLoading && (
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
               )}
-              Create
+              Créer
             </Button>
           </div>
         </form>
