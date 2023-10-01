@@ -39,29 +39,9 @@ export async function generateImage(image_description: string) {
       size: "256x256",
     });
     const data = await response.json();
-    const image_data = data.data[0].data;
-
-    // Convertir l'image en noir et blanc
-    const image_data_bw = new Uint8Array(image_data.length);
-    for (let i = 0; i < image_data.length; i += 4) {
-      // Calculer la luminosité du pixel
-      const brightness = (image_data[i] + image_data[i + 1] + image_data[i + 2]) / 3;
-
-      // Définir la couleur du pixel en noir et blanc
-      image_data_bw[i] = brightness > 128 ? 255 : 0;
-      image_data_bw[i + 1] = brightness > 128 ? 255 : 0;
-      image_data_bw[i + 2] = brightness > 128 ? 255 : 0;
-    }
-
-    // Convertir l'image en base64
-    const image_data_bw_arraybuffer = image_data_bw.buffer;
-    const image_url = image_data_bw_arraybuffer.toString();
-
-    // Retourner l'image en noir et blanc as string
+    const image_url = data.data[0].url;
     return image_url as string;
   } catch (error) {
     console.error(error);
   }
 }
-
-
