@@ -71,7 +71,7 @@ const CreateNoteDialog = (props: Props) => {
         <DialogHeader>
           <DialogTitle>Nouvelle idée</DialogTitle>
           <DialogDescription>
-            Ajoute une idée en cliquant dessus.
+          Saisissez votre idée ici. Elle peut être courte ou longue, sérieuse ou humoristique, importante ou futile.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit}>
